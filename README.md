@@ -20,7 +20,7 @@ pod 'TabTestSDK'
 2、保存并执行pod install,然后用后缀为.xcworkspace的文件打开工程</br>
 注意: 命令行下执行pod search TabTestSDK,如显示的TabTestSDK版本不是最新的，则先执行pod repo update操作更新本地repo的内容
 
-## 2. SDK使用
+## 三、SDK使用
 
 ### 2.1 导入头文件
 
@@ -74,8 +74,7 @@ TabTestSDKConfig为sdk配置对象，<font color=red>注意：</font>appid和gui
 /// @param sceneId 场景Id
 + (instancetype)tabTestSDK:(NSString *)appid sceneId:(NSString * _Nullable)sceneId;
 ```
-## 三、SDK使用之试验接口
-### 3.1 启动试验SDK
+### 3 启动试验SDK
 创建完SDK实例以后，需要手动启动start方法。启动start方法会做这些事情：第一步先从本地获取缓存的试验列表信息；第二步会异步请求试验列表的信息。
 另外，后台会每十分钟检查一次试验列表信息是否需要刷新，具体刷新频率由后台下发。
 ```objc
@@ -158,13 +157,13 @@ SDK提供API上报实验曝光事件。
 [sdk reportExpExpose:exp];
 ```
 ### 7. 行为日志上报
-#### 瞬时行为采集
+#### 7.1 瞬时行为采集
 ``` objc
 // items是业务方可以携带自定义属性，items数组值的顺序要跟平台配置的字段保持一致，最多能传入20个自定义属性
 NSArray *items = @[@"cancel", @"blue"];//依次写入button的名称、颜色
 [sdk.momentEvent onEvent:@"btn_click" items:items];
 ```
-#### 时长行为采集
+#### 7.2 时长行为采集
 针对计时类的行为采集，业务方可以通过durationEvent接口方法完成，支持计时开始、暂停、继续、结束等功能，业务方不需要
 自己算时长。
 ``` objc
